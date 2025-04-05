@@ -25,3 +25,8 @@ Ensure Live Server extension is installed in VS Code
 Right-click index.html and select "Open with Live Server"
 The login page will open in your default browser
 Enter test credentials to access the system
+
+## Future Implementation Notes
+* Frontend will be migrated from HTML5 to Handlebars (HBS)
+* Backend integration pending
+* Database implementation planned
