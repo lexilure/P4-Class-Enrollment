@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLSU Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="layout">
+        <div class="sidebar">
+            <div class="user-info">
+                <h3>Welcome</h3>
+                <p id="userNumberDisplay"></p>
+                <p id="userRoleDisplay"></p>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <a href="#courses" class="nav-button">
+                        <span class="nav-icon">📚</span>
+                        Available Courses
+                    </a>
+                    <a href="#enrollment" class="nav-button student-only">
+                        <span class="nav-icon">✍️</span>
+                        Enroll Courses
+                    </a>
+                    <a href="#grades" class="nav-button student-only">
+                        <span class="nav-icon">📊</span>
+                        View Grades
+                    </a>
+                    <a href="#upload" class="nav-button faculty-only">
+                        <span class="nav-icon">📝</span>
+                        Upload Grades
+                    </a>
+                </div>
+                <div class="nav-footer">
+                    <a href="#" id="logoutButton" class="nav-button logout">
+                        <span class="nav-icon">🚪</span>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <main class="main-content">
+            <div id="contentArea">
+                <!-- Dynamic content will load here -->
+            </div>
+        </main>
+    </div>
+    <script src="js/home.js"></script>
+</body>
+</html>
