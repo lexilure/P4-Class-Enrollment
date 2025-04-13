@@ -48,8 +48,8 @@ A web-based class enrollment system for De La Salle University students and facu
 3. Open a terminal and navigate to the `backend/` folder.
 4. Run the following to build and start the server:
 
-`mvn clean install`
-`mvn spring-boot:run`
+`./mvnw clean install`
+`./mvnw spring-boot:run`
 
 5. The backend will run at: http://localhost:8080
 

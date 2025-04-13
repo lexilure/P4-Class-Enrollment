@@ -28,6 +28,6 @@ public class EnrollmentController {
     // Get Enrollment Information
     @GetMapping("/student/{username}")
     public List<Enrollment> getEnrollmentsByStudent(@PathVariable String username) {
-        return enrollmentRepo.findByStudentUsername(username);
+        return enrollmentRepo.findByUsername(username);
     }
 }

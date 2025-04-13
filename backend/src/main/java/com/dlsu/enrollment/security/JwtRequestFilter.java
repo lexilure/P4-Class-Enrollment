@@ -4,22 +4,17 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Map;
 
-@WebFilter(urlPatterns = "/api/*") // Apply to API endpoints
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    private String secretKey = "secret_key"; // Use your secure secret key
+    private final String secretKey = "secret_key";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -28,21 +23,24 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         String authorizationHeader = request.getHeader("Authorization");
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            String token = authorizationHeader.substring(7); // Extract token
+            String token = authorizationHeader.substring(7);
 
             try {
                 // Validate the JWT token
-                Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
-
-                // Optionally, you can extract user info and set it in the context
-                // For example, set the user name in a security context for later use
+                Jwts.parser()
+                    .setSigningKey(secretKey)
+                    .parseClaimsJws(token);
+                
             } catch (ExpiredJwtException e) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "JWT Token has expired");
+                return;
             } catch (Exception e) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid JWT token");
+                return;
             }
         } else {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Authorization header missing or malformed");
+            return; 
         }
 
         chain.doFilter(request, response);

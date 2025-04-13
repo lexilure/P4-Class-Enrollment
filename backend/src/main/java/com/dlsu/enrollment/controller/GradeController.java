@@ -24,7 +24,7 @@ public class GradeController {
     // Get Grades of a student
     @GetMapping("/student/{username}")
     public List<Grade> getGradesByStudent(@PathVariable String username) {
-        return gradeRepo.findByStudentUsername(username);
+        return gradeRepo.findByUsername(username);
     }
 
     // Get Grades for a course
