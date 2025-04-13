@@ -40,8 +40,8 @@ public class UploadController {
             // Read each row from the Excel sheet
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
-                String username = row.getCell(0).getStringCellValue();  // Assuming the username is in the first column
-                String grade = row.getCell(1).getStringCellValue();    // Assuming the grade is in the second column
+                String username = row.getCell(0).getStringCellValue();  // username is in the first column
+                String grade = row.getCell(1).getStringCellValue();    // grade is in the second column
 
                 // Save the grade for the student
                 Grade gradeEntry = new Grade(username, courseCode, section, grade);

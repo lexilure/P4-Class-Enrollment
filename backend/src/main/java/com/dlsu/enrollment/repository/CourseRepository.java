@@ -7,3 +7,4 @@ import java.util.Optional;
 public interface CourseRepository extends MongoRepository<Course, String> {
     Optional<Course> findByCode(String code);
 }
+
