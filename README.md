@@ -67,7 +67,8 @@ A web-based class enrollment system for De La Salle University students and facu
 │   │               │   ├── AuthController.java
 │   │               │   ├── CourseController.java
 │   │               │   ├── EnrollmentController.java
-│   │               │   └── GradeController.java
+│   │               │   ├── GradeController.java
+│   │               │   └── UploadController.java
 │   │               ├── model/
 │   │               │   ├── Course.java
 │   │               │   ├── Enrollment.java
