@@ -2,18 +2,22 @@ package com.dlsu.enrollment.controller;
 
 import com.dlsu.enrollment.model.Grade;
 import com.dlsu.enrollment.repository.GradeRepository;
+import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
 @RequestMapping("/grades")
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = "*")
 public class GradeController {
 
     @Autowired
     private GradeRepository gradeRepo;
+
+    private static final String SECRET_KEY = "secret_key";
 
     // Add Grade for a course
     @PostMapping("/upload")
@@ -21,15 +25,23 @@ public class GradeController {
         return gradeRepo.save(grade);
     }
 
-    // Get Grades of a student
-    @GetMapping("/student/{username}")
-    public List<Grade> getGradesByStudent(@PathVariable String username) {
-        return gradeRepo.findByUsername(username);
+    // Get Grades for a course (Filtered by courseCode and student)
+    @GetMapping("/course/{courseCode}")
+    public List<Grade> getGradesByCourse(@PathVariable String courseCode, HttpServletRequest request) {
+        String studentId = getStudentIdFromToken(request);
+        return gradeRepo.findByCourseCodeAndStudentId(courseCode, studentId);
     }
 
-    // Get Grades for a course
-    @GetMapping("/course/{courseCode}")
-    public List<Grade> getGradesByCourse(@PathVariable String courseCode) {
-        return gradeRepo.findByCourseCode(courseCode);
+    // Helper method to extract studentId from JWT token
+    private String getStudentIdFromToken(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        if (token != null && token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 }
