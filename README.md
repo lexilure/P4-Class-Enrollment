@@ -85,7 +85,7 @@ project-folder/
 │   │               │   └── JwtUtil.java
 │   │               └── EnrollmentSystemApplication.java
 ├── pom.xml
-└── application.properties
+├── application.properties
 └── frontend/
     ├── css/
     │   └── style.css
@@ -94,13 +94,13 @@ project-folder/
     │   ├── home.js
     │   ├── grades.js
     │   ├── enrollment.js
-    │   └── schedule.js
-			upload.js
+    │   ├── schedule.js
+	│   └── upload.js
     ├── pages/
     │   ├── home.html
     │   ├── courses.html
     │   ├── enrollment.html
     │   ├── grades.html
-    │   └── upload.html
-			schedule.html
+    │   ├── upload.html
+    │   └── schedule.html
     ├── index.html
