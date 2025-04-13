@@ -52,3 +52,55 @@ mvn clean install
 mvn spring-boot:run
 
 5. The backend will run at: http://localhost:8080
+
+## Project Structure
+
+```project-folder/
+├── backend/
+│   ├── src/
+│   │   └── com/
+│   │       └── dlsu/
+│   │           └── enrollment/
+│   │               ├── config/
+│   │               │   └── SecurityConfig.java
+│   │               ├── controller/
+│   │               │   ├── AuthController.java
+│   │               │   ├── CourseController.java
+│   │               │   ├── EnrollmentController.java
+│   │               │   └── GradeController.java
+│   │               ├── model/
+│   │               │   ├── Course.java
+│   │               │   ├── Enrollment.java
+│   │               │   ├── Grade.java
+│   │               │   ├── JwtResponse.java
+│   │               │   ├── LoginRequest.java
+│   │               │   └── User.java
+│   │               ├── repository/
+│   │               │   ├── CourseRepository.java
+│   │               │   ├── EnrollmentRepository.java
+│   │               │   ├── GradeRepository.java
+│   │               │   └── UserRepository.java
+│   │               ├── security/
+│   │               │   ├── JwtRequestFilter.java
+│   │               │   └── JwtUtil.java
+│   │               └── EnrollmentSystemApplication.java
+├── pom.xml
+├── application.properties
+└── frontend/
+    ├── css/
+    │   └── style.css
+    ├── js/
+    │   ├── login.js
+    │   ├── home.js
+    │   ├── grades.js
+    │   ├── enrollment.js
+    │   ├── schedule.js
+    │   └── upload.js
+    ├── pages/
+    │   ├── home.html
+    │   ├── courses.html
+    │   ├── enrollment.html
+    │   ├── grades.html
+    │   ├── upload.html
+    │   └── schedule.html
+    ├── index.html```
