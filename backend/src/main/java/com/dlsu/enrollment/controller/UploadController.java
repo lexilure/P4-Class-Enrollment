@@ -41,7 +41,7 @@ public class UploadController {
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 String username = row.getCell(0).getStringCellValue();  // username is in the first column
-                String grade = row.getCell(1).getStringCellValue();    // grade is in the second column
+                double grade = row.getCell(1).getNumericCellValue();   // grade is in the second column
 
                 // Save the grade for the student
                 Grade gradeEntry = new Grade(username, courseCode, section, grade);

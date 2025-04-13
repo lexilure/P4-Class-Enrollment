@@ -6,7 +6,7 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -28,8 +28,8 @@ public class GradeController {
     // Get Grades for a course (Filtered by courseCode and student)
     @GetMapping("/course/{courseCode}")
     public List<Grade> getGradesByCourse(@PathVariable String courseCode, HttpServletRequest request) {
-        String studentId = getStudentIdFromToken(request);
-        return gradeRepo.findByCourseCodeAndStudentId(courseCode, studentId);
+        String username = getStudentIdFromToken(request);
+        return gradeRepo.findByCourseCodeAndUsername(courseCode, username);
     }
 
     // Helper method to extract studentId from JWT token

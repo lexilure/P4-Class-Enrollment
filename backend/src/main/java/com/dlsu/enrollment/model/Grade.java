@@ -8,7 +8,6 @@ public class Grade {
 
     @Id
     private String id;
-
     private String username;
     private String courseCode;
     private String courseName;
@@ -17,6 +16,13 @@ public class Grade {
     private String term;
 
     public Grade() {}
+
+    public Grade(String username, String courseCode, String section, double grade) {
+        this.username = username;
+        this.courseCode = courseCode;
+        this.section = section;
+        this.grade = grade;
+    }
 
     public Grade(String username, String courseCode, String courseName, String section, double grade, String term) {
         this.username = username;
